@@ -10,14 +10,20 @@ import UIKit
 
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated:true)
     }
     
-    func addItemViewController(_controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
-        navigationController?.popViewController(animated: true)
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        
+        let newRowIndex = items.count
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated:true)
     }
-    
-    
+
     var items: [ChecklistItem]
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,19 +76,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func addItem() {
-        let newRowIndex = items.count
-        
-        let item = ChecklistItem()
-        item.text = "I am a new row"
-        item.checked = true
-        items.append(item)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView,
