@@ -8,6 +8,8 @@
 
 import UIKit
 
+var items = [ChecklistItem]()
+
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated:true)
@@ -22,6 +24,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated:true)
+        
+        saveChecklistItems()
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
@@ -32,55 +36,49 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             }
         }
         navigationController?.popViewController(animated:true)
+        
+        saveChecklistItems()
     }
-
-    var items: [ChecklistItem]
     
-    required init?(coder aDecoder: NSCoder) {
-        items = [ChecklistItem]()
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         
-        let row0item = ChecklistItem()
-        row0item.text = "Walk the dog"
-        row0item.checked = false
-        items.append(row0item)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder = PropertyListEncoder()
         
-        let row1item = ChecklistItem()
-        row1item.text = "Brush my teeth"
-        row1item.checked = true
-        items.append(row1item)
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding item array!")
+        }
+    }
+    
+    func loadChecklistItems() {
+        let path = dataFilePath()
         
-        let row2item = ChecklistItem()
-        row2item.text = "Learn iOS development"
-        row2item.checked = true
-        items.append(row2item)
-        
-        let row3item = ChecklistItem()
-        row3item.text = "Finsh my application"
-        row3item.checked = false
-        items.append(row3item)
-        
-        let row4item = ChecklistItem()
-        row4item.text = "Eat ice cream"
-        row4item.checked = false
-        items.append(row4item)
-        
-        let row5item = ChecklistItem()
-        row5item.text = "Take out contacts"
-        row5item.checked = true
-        items.append(row5item)
-        
-        let row6item = ChecklistItem()
-        row6item.text = "Go to sleep"
-        row6item.checked = false
-        items.append(row6item)
-        
-        super.init(coder: aDecoder)
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                items = try decoder.decode([ChecklistItem].self, from: data)
+            } catch {
+                print("Error decoding item array!")
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationController?.navigationBar.prefersLargeTitles = true
+        loadChecklistItems()
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,6 +118,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+        saveChecklistItems()
     }
     
     override func tableView(_ tableView: UITableView,
@@ -129,6 +128,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        saveChecklistItems()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
