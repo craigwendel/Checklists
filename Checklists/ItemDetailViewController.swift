@@ -37,6 +37,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     weak var delegate: AddItemViewControllerDelegate?
     var itemToEdit: ChecklistItem?
     
+    // MARK:- Actions
+    
     @IBAction func cancel() {
         delegate?.itemDetailViewControllerDidCancel(self)
     }
@@ -53,6 +55,8 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK:- TableView Delegates
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
@@ -62,13 +66,13 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
+    // MARK:- UITextField Delegates
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-            let oldText = textField.text!
-            let stringRange = Range(range, in: oldText)!
-            let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        let oldText = textField.text!
+        let stringRange = Range(range, in: oldText)!
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
         
         doneBarButton.isEnabled = !newText.isEmpty
         

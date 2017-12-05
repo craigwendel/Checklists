@@ -74,10 +74,13 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
     }
     
+    var checklist: Checklist!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
+        title = checklist.name
         loadChecklistItems()
     }
 
@@ -86,28 +89,22 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(_ tableView: UITableView,
-                                numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    override func tableView(_ tableView: UITableView,
-                                cellForRowAt indexPath: IndexPath) ->
-                                UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "ChecklistItem",
-                for: indexPath)
-                                    
-            let item = items[indexPath.row]
-            
-            configureText(for: cell, with: item)
-            configureCheckmark(for: cell, with: item)
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
+        
+        let item = items[indexPath.row]
+        
+        configureText(for: cell, with: item)
+        configureCheckmark(for: cell, with: item)
+        return cell
     }
     
-    override func tableView(_ tableView: UITableView,
-                                didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             
@@ -121,9 +118,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         saveChecklistItems()
     }
     
-    override func tableView(_ tableView: UITableView,
-                            commit edittingStyle: UITableViewCellEditingStyle,
-                            forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit edittingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         items.remove(at: indexPath.row)
         
         let indexPaths = [indexPath]
@@ -145,8 +140,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
     }
     
-    func configureCheckmark(for cell: UITableViewCell,
-                               with item: ChecklistItem) {
+    func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         
         let label = cell.viewWithTag(1001) as! UILabel
         
@@ -157,8 +151,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
     }
     
-    func configureText(for cell: UITableViewCell,
-                        with item: ChecklistItem) {
+    func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
         
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
