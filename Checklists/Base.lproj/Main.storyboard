@@ -21,13 +21,12 @@
                     <navigationItem key="navigationItem" title="Checklists" id="h9H-1v-qSq">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5r6-4m-AC3">
                             <connections>
-                                <segue destination="uSN-Rj-aQB" kind="show" identifier="EditChecklist" id="w2G-51-Fgk"/>
+                                <segue destination="uSN-Rj-aQB" kind="show" identifier="AddChecklist" id="NoL-Rt-30Z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="7zv-wK-YKa" kind="show" identifier="ShowChecklist" id="X0l-cp-ZNf"/>
-                        <segue destination="uSN-Rj-aQB" kind="show" identifier="AddChecklist" id="N9u-Pv-2z1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44W-A3-hzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -37,7 +36,7 @@
         <!--Add Checklist-->
         <scene sceneID="eLM-3W-TMy">
             <objects>
-                <tableViewController id="uSN-Rj-aQB" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListDetailViewController" id="uSN-Rj-aQB" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hva-S3-7qA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +58,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="done" destination="uSN-Rj-aQB" eventType="editingDidEndOnExit" id="UQN-4X-KLM"/>
+                                                        <action selector="done" destination="uSN-Rj-aQB" eventType="editingDidEndOnExit" id="o07-2J-rto"/>
                                                         <outlet property="delegate" destination="uSN-Rj-aQB" id="Grb-Ib-90g"/>
                                                     </connections>
                                                 </textField>
@@ -77,23 +76,23 @@
                     <navigationItem key="navigationItem" title="Add Checklist" largeTitleDisplayMode="never" id="I1I-HN-OiE">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Vph-nW-RzU">
                             <connections>
-                                <action selector="cancel" destination="uSN-Rj-aQB" id="sB2-6x-2ya"/>
+                                <action selector="cancel" destination="uSN-Rj-aQB" id="N4E-sZ-EFv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="SoB-oe-Bli">
                             <connections>
-                                <action selector="done" destination="uSN-Rj-aQB" id="2Wk-W7-Eye"/>
+                                <action selector="done" destination="uSN-Rj-aQB" id="eGj-u5-FYs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneBarButton" destination="SoB-oe-Bli" id="7Df-Cg-xYE"/>
-                        <outlet property="textField" destination="Njw-j5-7JI" id="4Xt-Mh-xcH"/>
+                        <outlet property="doneBarButton" destination="SoB-oe-Bli" id="UQC-AK-c1T"/>
+                        <outlet property="textField" destination="Njw-j5-7JI" id="8Eg-Ih-e0q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSL-Y3-SLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258.75" y="732.04225352112678"/>
+            <point key="canvasLocation" x="258" y="752"/>
         </scene>
         <!--Checklist-->
         <scene sceneID="M5c-eI-laP">
@@ -231,6 +230,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="djM-S9-mtd"/>
-        <segue reference="N9u-Pv-2z1"/>
     </inferredMetricsTieBreakers>
 </document>
