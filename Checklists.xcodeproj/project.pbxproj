@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AE004ABE1FD9A66500EFC324 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE004ABD1FD9A66500EFC324 /* IconPickerViewController.swift */; };
+		AE004ABF1FD9B9CD00EFC324 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEFC7B1FD608E500A702E9 /* AllListsViewController.swift */; };
 		AE8254881FCDBBD500DDB672 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8254871FCDBBD500DDB672 /* ChecklistItem.swift */; };
 		AE90E7A01FCC8C7F0059531D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90E79F1FCC8C7F0059531D /* AppDelegate.swift */; };
 		AE90E7A21FCC8C7F0059531D /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90E7A11FCC8C7F0059531D /* ChecklistViewController.swift */; };
 		AE90E7A51FCC8C7F0059531D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE90E7A31FCC8C7F0059531D /* Main.storyboard */; };
 		AE90E7A71FCC8C7F0059531D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE90E7A61FCC8C7F0059531D /* Assets.xcassets */; };
 		AE90E7AA1FCC8C7F0059531D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE90E7A81FCC8C7F0059531D /* LaunchScreen.storyboard */; };
-		AEAEFC7C1FD608E500A702E9 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEFC7B1FD608E500A702E9 /* AllListsViewController.swift */; };
 		AEAEFC7E1FD6144800A702E9 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEFC7D1FD6144800A702E9 /* Checklist.swift */; };
 		AEAEFC801FD61F5C00A702E9 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEFC7F1FD61F5C00A702E9 /* ListDetailViewController.swift */; };
 		AEAEFC821FD8A58400A702E9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAEFC811FD8A58400A702E9 /* DataModel.swift */; };
@@ -188,8 +188,8 @@
 				AEAEFC7E1FD6144800A702E9 /* Checklist.swift in Sources */,
 				AE8254881FCDBBD500DDB672 /* ChecklistItem.swift in Sources */,
 				AEAEFC821FD8A58400A702E9 /* DataModel.swift in Sources */,
-				AEAEFC7C1FD608E500A702E9 /* AllListsViewController.swift in Sources */,
 				AE90E7A01FCC8C7F0059531D /* AppDelegate.swift in Sources */,
+				AE004ABF1FD9B9CD00EFC324 /* AllListsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
