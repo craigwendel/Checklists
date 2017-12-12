@@ -292,6 +292,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IK2-kX-HLT">
                                                     <rect key="frame" x="253" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggled:" destination="C8k-PH-1MD" eventType="valueChanged" id="Hny-Kz-WV9"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
